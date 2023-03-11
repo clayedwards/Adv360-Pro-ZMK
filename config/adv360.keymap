@@ -54,7 +54,7 @@
         &trans &trans &trans &trans &trans &trans  &none                                                       &none &trans &trans       &trans         &trans     &trans     &trans
         &trans &trans &trans &trans &trans &trans  &none        &trans &trans &none &none &trans &trans        &none &trans &trans       &trans         &trans     &kp PSCRN  &trans
         &trans &trans &trans &trans &trans &trans        &none  &none  &trans &none &none &trans &none  &none        &trans &trans       &trans         &kp C_MUTE &kp PAUSE_BREAK &trans
-        &trans &trans &trans &kp SLCK &trans               &trans &trans &trans             &trans &trans &trans              &kp C_VOL_UP &kp C_VOL_DOWN &trans     &trans     &trans
+        &trans &trans &trans &kp SLCK &trans               &trans &trans &trans             &trans &trans &trans              &kp C_VOL_UP &kp C_VOL_DN &trans     &trans     &trans
       >;
     };
     mod {
