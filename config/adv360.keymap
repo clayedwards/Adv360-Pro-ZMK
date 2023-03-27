@@ -51,10 +51,10 @@
     fn {
       bindings = <
         &kp F11 &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &tog 1                                                       &mo 3 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F12
-        &trans &trans &trans &trans &trans &trans  &none                                                       &none &trans &trans       &trans         &trans     &kp PSCRN     &trans
-        &trans &trans &trans &trans &trans &trans  &none        &trans &trans &none &none &trans &trans        &none &trans &trans       &trans         &trans     &kp PAUSE_BREAK  &trans
-        &trans &trans &trans &trans &trans &trans        &none  &none  &trans &none &none &trans &none  &none        &trans &trans       &trans         &kp C_MUTE &trans     &trans
-        &trans &trans &trans &kp LSLCK &trans            &trans &trans &trans             &trans &trans &trans              &kp C_VOL_UP &kp C_VOL_DN &trans     &trans     &trans
+        &trans &trans &trans    &trans &trans &trans  &none                                                       &none &trans &trans       &trans         &trans     &kp PSCRN     &trans
+        &trans &trans &trans    &trans &trans &trans  &none        &trans &trans &none &none &trans &trans        &none &trans &trans       &trans         &trans     &kp PAUSE_BREAK  &trans
+        &trans &trans &trans    &trans &trans &trans        &none  &none  &trans &none &none &trans &none  &none        &trans &trans       &trans         &kp C_MUTE &trans     &trans
+        &trans &trans &kp LSLCK &trans &trans               &trans &trans &trans             &trans &trans &trans              &kp C_VOL_UP &kp C_VOL_DN &trans     &trans     &trans
       >;
     };
     mod {
