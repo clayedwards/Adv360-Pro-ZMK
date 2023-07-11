@@ -26,6 +26,7 @@
 		ctltab: control_tab {
 		    compatible = "zmk, behavior-mod-morph";
 			label = "CONTROL_TAB";
+			#binding-cells = <0>;
 			bindings = <&kp TAB>, <&kp SQT>;
 			mods = <(MOD_LCTL)>;
 		};
