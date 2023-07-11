@@ -33,7 +33,7 @@
 	    };
 	    combo_ctrltab {
 	        timeout-ms = <50>;
-			layers = <0 3 4>;
+			layers = <3 4>;
 		    key-positions = <LCTRLPOS TABPOS>;
 		    bindings = <&kp SQT>;
 	    };
@@ -73,7 +73,7 @@
     game3 {
       bindings = <
         &trans   &trans &trans &trans &trans &trans  &trans                                                          &trans &trans &trans &trans &trans &trans &trans
-        &trans   &trans &trans &trans &trans &trans  &none                                                           &tog 3 &trans &trans &trans &trans &trans &trans
+        &kp TAB  &trans &trans &trans &trans &trans  &none                                                           &tog 3 &trans &trans &trans &trans &trans &trans
         &kp BSPC &trans &trans &trans &trans &trans  &none          &trans &trans &none &none &trans &trans        &none  &trans &trans &trans &trans &trans &trans
         &kp DEL &trans &trans &trans &trans &trans        &none     &none  &trans &none &none &trans &none  &none         &trans &trans &trans &trans &trans &trans
         &trans &trans &trans &trans &trans                &kp LSHFT &mo 4  &trans             &trans &trans &trans               &trans &trans &trans &trans &trans
