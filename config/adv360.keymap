@@ -33,7 +33,7 @@
 	    };
 	    combo_ctrltab {
 	        timeout-ms = <50>;
-			layers = <3 4>;
+			layers = <0 3 4>;
 		    key-positions = <LCTRLPOS TABPOS>;
 		    bindings = <&kp SQT>;
 	    };
