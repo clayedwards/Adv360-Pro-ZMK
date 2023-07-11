@@ -23,6 +23,12 @@
 			flavor = "tap-preferred";
 			bindings = <&kp>, <&kp>;
 		};
+		ctltab: control_tab {
+		    compatible = "zmk, behavior-mod-morph";
+			label = "CONTROL_TAB";
+			bindings = <$kp TAB>, <$kp SQT>;
+			mods = <MOD_LCTL>
+		}
     };
     combos {
         compatible = "zmk,combos";
@@ -30,12 +36,6 @@
 	        timeout-ms = <50>;
 		    key-positions = <0 1>;
 		    bindings = <&kp ESC>;
-	    };
-	    combo_ctrltab {
-	        timeout-ms = <50>;
-			layers = <3 4>;
-		    key-positions = <LCTRLPOS TABPOS>;
-		    bindings = <&kp SQT>;
 	    };
     };
 
@@ -73,7 +73,7 @@
     game3 {
       bindings = <
         &trans   &trans &trans &trans &trans &trans  &trans                                                          &trans &trans &trans &trans &trans &trans &trans
-        &kp TAB  &trans &trans &trans &trans &trans  &none                                                           &tog 3 &trans &trans &trans &trans &trans &trans
+        &ctltab  &trans &trans &trans &trans &trans  &none                                                           &tog 3 &trans &trans &trans &trans &trans &trans
         &kp BSPC &trans &trans &trans &trans &trans  &none          &trans &trans &none &none &trans &trans        &none  &trans &trans &trans &trans &trans &trans
         &kp DEL &trans &trans &trans &trans &trans        &none     &none  &trans &none &none &trans &none  &none         &trans &trans &trans &trans &trans &trans
         &trans &trans &trans &trans &trans                &kp LSHFT &mo 4  &trans             &trans &trans &trans               &trans &trans &trans &trans &trans
