@@ -74,7 +74,7 @@
     game3 {
       bindings = <
         &trans   &trans &trans &trans &trans &trans  &trans                                                          &trans &trans &trans &trans &trans &trans &trans
-        &ctltab  &trans &trans &trans &trans &trans  &none                                                           &tog 3 &trans &trans &trans &trans &trans &trans
+        &kp TAB  &trans &trans &trans &trans &trans  &none                                                           &tog 3 &trans &trans &trans &trans &trans &trans
         &kp BSPC &trans &trans &trans &trans &trans  &none          &trans &trans &none &none &trans &trans        &none  &trans &trans &trans &trans &trans &trans
         &kp DEL &trans &trans &trans &trans &trans        &none     &none  &trans &none &none &trans &none  &none         &trans &trans &trans &trans &trans &trans
         &trans &trans &trans &trans &trans                &kp LSHFT &mo 4  &trans             &trans &trans &trans               &trans &trans &trans &trans &trans
