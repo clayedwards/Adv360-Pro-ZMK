@@ -24,7 +24,7 @@
 			bindings = <&kp>, <&kp>;
 		};
 		ctltab: control_tab {
-		    compatible = "zmk, behavior-mod-morph";
+		    compatible = "zmk,behavior-mod-morph";
 			label = "CONTROL_TAB";
 			#binding-cells = <3>;
 			bindings = <&kp TAB>, <&kp SQT>;
