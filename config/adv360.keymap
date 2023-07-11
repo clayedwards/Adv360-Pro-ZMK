@@ -27,8 +27,8 @@
 		    compatible = "zmk, behavior-mod-morph";
 			label = "CONTROL_TAB";
 			bindings = <$kp TAB>, <$kp SQT>;
-			mods = <MOD_LCTL>
-		}
+			mods = <(MOD_LCTL)>;
+		};
     };
     combos {
         compatible = "zmk,combos";
