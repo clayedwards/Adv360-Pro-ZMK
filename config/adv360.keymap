@@ -6,21 +6,43 @@
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/pointing.h>
 
+#define ROW0 0
+#define ROW1 14
+#define ROW2 28
+#define LCTRLPOS 35
+#define TABPOS 14
+
 / {
     behaviors {
       #include "macros.dtsi"
       #include "version.dtsi"
 
-      hm: homerow_mods {
-          compatible = "zmk,behavior-hold-tap";
-          label = "HOMEROW_MODS";
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          quick_tap_ms = <175>;
-          flavor = "tap-preferred";
-          bindings = <&kp>, <&kp>;
-      };
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+			#binding-cells = <2>;
+			tapping-term-ms = <200>;
+			quick_tap_ms = <175>;
+			flavor = "tap-preferred";
+			bindings = <&kp>, <&kp>;
+		};
+		ctltab: control_tab {
+		    compatible = "zmk,behavior-mod-morph";
+			label = "CONTROL_TAB";
+			#binding-cells = <0>;
+			bindings = <&kp TAB>, <&kp SQT>;
+			mods = <(MOD_LCTL)>;
+		};
     };
+    combos {
+        compatible = "zmk,combos";
+	    combo_esc {
+	        timeout-ms = <50>;
+		    key-positions = <0 1>;
+		    bindings = <&kp ESC>;
+	    };
+    };
+
 
   keymap {
     compatible = "zmk,keymap";
@@ -28,17 +50,17 @@
     default_layer {
       display-name = "Base";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
-        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none           &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL           &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp SQT
-        &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                            &kp HOME &kp PG_UP                           &kp N  &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
+        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 5 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
+        &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &tog 3 &kp Y  &kp U  &kp I    &kp O    &kp P    &kp BSLH
+        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none           &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL           &none  &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp SQT
+        &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                            &kp HOME &kp PG_UP                            &kp N  &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
+        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE               &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
     };
     keypad {
       display-name = "Kp";
       bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &trans                                                           &mo 3 &kp N6 &kp KP_NUM &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp MINUS
+        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &trans                                                           &mo 5 &kp N6 &kp KP_NUM &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp MINUS
         &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp BSLH
         &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none           &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL           &none &kp H  &kp KP_N4  &kp KP_N5    &kp KP_N6     &kp KP_PLUS     &kp SQT
         &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                            &kp HOME &kp PG_UP                           &kp N  &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &kp RSHFT
@@ -48,21 +70,39 @@
     fn {
       display-name = "Fn";
       bindings = <
-        &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &tog 1                                           &mo 3 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-        &trans &trans &trans &trans &trans &trans  &none                                           &none &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans &trans  &none        &trans &trans &trans &trans        &none &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans &trans                      &trans &trans                     &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans              &trans &trans &trans  &trans  &trans
+        &kp F11 &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &tog 1                                           &mo 5 &kp F6 &kp F7       &kp F8       &kp F9     &kp F10            &kp F12
+        &trans &trans &trans &trans &trans &trans  &none                                            &none &trans &trans       &trans       &trans     &kp PSCN           &trans
+        &trans &trans &trans &trans &trans &trans  &none        &trans  &trans &kp RALT &trans      &none &trans &trans       &trans       &trans     &kp PAUSE_BREAK    &trans
+        &trans &trans &trans &trans &trans &trans                       &trans &trans                     &trans &trans       &trans       &kp C_MUTE &trans             &trans
+        &trans &trans &trans &trans &trans               &trans &kp INS &trans &trans &trans &trans              &kp C_VOL_UP &kp C_VOL_DN &trans     &trans             &trans
       >;
     };
+    game3 {
+      bindings = <
+        &trans   &trans &trans &trans &trans &trans  &trans                                            &trans &trans &trans &trans &trans &trans &trans
+        &ctltab  &trans &trans &trans &trans &trans  &none                                             &tog 3 &trans &trans &trans &trans &trans &trans
+        &kp BSPC &trans &trans &trans &trans &trans  &none          &trans &trans &trans &trans        &none  &trans &trans &trans &trans &trans &trans
+        &kp DEL &trans &trans &trans &trans &trans                         &trans &trans                      &trans &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans                &kp LSHFT &mo 4  &trans &trans &trans &trans               &trans &trans &trans &trans &trans
+      >;
+	};
+    game4 {
+      bindings = <
+        &kp MINUS         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0      &trans                                                      &trans &trans &trans &trans &trans &trans &trans
+        &kp LS(SQT)       &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp LS(N9) &kp LS(N0)  &none                                                       &tog 3 &trans &trans &trans &trans &trans &trans
+        &kp LS(LC(MINUS)) &kp LC(N6) &kp LC(N7) &kp LC(N8) &kp LC(N9) &kp LC(N0)  &none        &trans &trans &none &none &trans &trans        &none  &trans &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans &trans        &none  &none  &trans &none &none &trans &none  &none         &trans &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans               &trans &trans &trans             &trans &trans &trans               &trans &trans &trans &trans &trans
+      >;
+	};
     mod {
       display-name = "Mod";
       bindings = <
-        &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                     &trans                 &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &none        &none        &bootloader                                                               &bootloader            &none        &none        &none        &none &none &none
-        &studio_unlock &none        &none        &none        &none        &none        &none                   &none &none &bt BT_CLR &none                      &stp STP_BAT &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &macro_ver   &none                                      &none &none                                                        &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &none                                       &none &none &none &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none &none &none
+        &none          &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                     &trans                 &none        &none        &none        &none &none &none
+        &none          &none        &none        &none        &none        &none        &bootloader                                                               &bootloader            &none        &none        &none        &none &none &none
+        &studio_unlock &none        &none        &none        &none        &none        &none                   &none &none &bt BT_CLR &none                      &stp STP_BAT           &none        &none        &none        &none &none &none
+        &none          &none        &none        &none        &macro_ver   &none                                      &none &none                                                        &none        &none        &none        &none &none &none
+        &none          &none        &none        &none        &none                                       &none &none &none &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none &none &none
       >;
     };
     extra1 { 
